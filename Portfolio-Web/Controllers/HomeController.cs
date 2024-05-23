@@ -15,7 +15,17 @@ namespace Portfolio_Web.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            ViewBag.lastName = "Garao";
+            ViewBag.age = 22;
+            var person = new Person() 
+            {
+                Name = "Francisco",
+                LastName = "Garao",
+                Age = 12,
+            };
+            //  es necesario especificar el nombre de la vista solamente si pasamos como model un string
+            //  return View("Index", "Franchute");
+            return View(person);
         }
 
         public IActionResult Privacy()
