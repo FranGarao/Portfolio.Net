@@ -1,12 +1,13 @@
-﻿
-@{
+﻿@Model person
 
+
+@{
     ViewData["Title"] = "Portfolio - Home";
     string ConvertToUpper(string str) => str.ToUpper();
 }
 
 <div class="text-center">
-    <h1 class="display-4 title">Soy Francisco Garao</h1>
+    <h1 class="display-4 title">Soy @ConvertToUpper(Model.Name) Garao y tengo @Model.Age</h1>
     <p>Soy un desarrollador full stack en tecnologias .NET y Javascript y tengo @ViewBag.age.</p>
     <img style="width: 200px;height: 200px;margin: 2rem; border-radius: 50%"
          src="~/imgs/fotoCv.png" alt="Foto de apuntes" />
@@ -23,7 +24,22 @@
     </div>
 </div>
 
-
+<div class="row justify-content-md-align-content-center text-center">
+    <div class="col col-md-4">
+        <h2>Proyectos</h2>
+        <p>Conoce los proyectos en los que he trabajado</p>
+        <a href="/Projects" class="btn btn-primary">Ver Proyectos</a>
+    </div>
+    <div class="col col-md-4">
+        <h2>Skills</h2>
+        <p>Conoce las tecnologias que manejo</p>
+        <a href="/Skills" class="btn btn-primary">Ver Skills</a>
+    </div>
+    <div class="col col-md-4">
+        <h2>Contacto</h2>
+        <p>Si deseas contactarme, haz click en el boton</p>
+        <a href="/Contact" class="btn btn-primary">Contacto</a>
+    </div>
 
 
 

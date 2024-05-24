@@ -16,12 +16,13 @@ namespace Portfolio_Web.Controllers
         public IActionResult Index()
         {
             ViewBag.lastName = "Garao";
-            ViewBag.age = 22;
+            
             var person = new Person() 
             {
                 Name = "Francisco",
                 LastName = "Garao",
-                Age = 12,
+                Age = 22,
+                Address = "Calle Falsa 123"
             };
             //  es necesario especificar el nombre de la vista solamente si pasamos como model un string
             //  return View("Index", "Franchute");
