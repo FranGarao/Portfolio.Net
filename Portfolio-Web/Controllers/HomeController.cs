@@ -15,9 +15,10 @@ namespace Portfolio_Web.Controllers
 
         public IActionResult Index()
         {
-            ViewBag.lastName = "Garao";
-            
-            var person = new Person() 
+            ViewBag.age = "22";
+            var projects = GetProjects().Take(2).ToList();
+            var model = new HomeIndexViewModel() { Projects = projects };
+            var person = new Person()
             {
                 Name = "Francisco",
                 LastName = "Garao",
@@ -26,9 +27,36 @@ namespace Portfolio_Web.Controllers
             };
             //  es necesario especificar el nombre de la vista solamente si pasamos como model un string
             //  return View("Index", "Franchute");
-            return View(person);
+            return View(model);
         }
 
+        private List<ProjectDTO> GetProjects()
+        {
+            return new List<ProjectDTO>() {
+
+                new ProjectDTO
+            {
+                Title = "Amazon",
+                Description = "E-Commerce realizado con ASP.NET Core",
+                Link = "http://link-de-prueba.com",
+                ImageUrl = ""
+            },
+                new ProjectDTO
+            {
+                Title = "Amazon",
+                Description = "E-Commerce realizado con ASP.NET Core",
+                Link = "http://link-de-prueba.com",
+                ImageUrl = ""
+            },
+                new ProjectDTO
+            {
+                Title = "Amazon",
+                Description = "E-Commerce realizado con ASP.NET Core",
+                Link = "http://link-de-prueba.com",
+                ImageUrl = ""
+            },
+            };
+        }
         public IActionResult Privacy()
         {
             return View();

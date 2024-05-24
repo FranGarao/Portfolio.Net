@@ -8,15 +8,28 @@
 }
 
 .welcome-section {
-    background-color: #1c1c1c;
+    background-color: #67217A;
     color: white;
-    margin: 0rem 0 10rem 0;
     width: 100%;
     height: 300px;
     padding: 15px 0;
 }
 
-    .welcome-section h1 {
-        margin-bottom: 2rem;
-    }
+.header-title {
+    font-weight: bold;
+    color: #67217A;
+}
+
+.skills ul {
+    list-style: none;
+    padding: 0;
+}
+
+.skills {
+    position: relative;
+    bottom: 50px;
+    i {
+          color: #67217A;
+          font-size: 30px;
+      }
 }

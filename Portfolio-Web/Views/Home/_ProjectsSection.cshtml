@@ -1,0 +1,31 @@
+﻿@model IEnumerable<ProjectDTO>
+
+@* Es dinamic, si ponemos un nombre incorrecto, no nos dice el error exacto. Para solucionar esto, 
+importamos el modelo arriba. Aunque se supone que esta vista solo es para mostrar un listado de proyectos, pero
+nos limita. Entonces cambiamos @model HomeIndexViewModel por IEnumerable<ProjectDTO>
+*@
+@if (Model is not null)
+{
+    <div class="text-center">
+        <h1>Mis trabajos recientes</h1>
+        <p>Aqui puedes visualizar algunos de mis trabjaos mas recientes.</p>
+
+        <div>
+            <div class="row row-cols-1 row-cols-md-2 g-4">
+                @foreach (var project in Model)
+                {
+                    <div>
+                        <div class="card h-100">
+                            <h5>@project.Title</h5>
+                            <p>@project.Description</p>
+                        </div>
+                        <div>
+                            <a class="btn btn-primary" href="@project.Link" target="_blank">Link</a>
+                        </div>
+                    </div>
+
+                }
+            </div>
+        </div>
+    </div>
+}
