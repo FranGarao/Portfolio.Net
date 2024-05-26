@@ -1,7 +1,14 @@
+using Portfolio_Web.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddTransient<IRepositorioProyectos, RepositorioProyectos>();
+// tipos de inyeccion de dependencias
+builder.Services.AddTransient<TransientService>(); 
+builder.Services.AddSingleton<SingletonService>(); 
+builder.Services.AddScoped<ScopedService>(); 
 
 var app = builder.Build();
 
