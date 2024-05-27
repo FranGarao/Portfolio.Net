@@ -31,6 +31,12 @@ namespace Portfolio_Web.Services
                 Description = "E-Commerce realizado con ASP.NET Core",
                 Link = "http://link-de-prueba.com",
                 ImageUrl = ""
+            },               new ProjectDTO
+            {
+                Title = "Amazon",
+                Description = "E-Commerce realizado con ASP.NET Core",
+                Link = "http://link-de-prueba.com",
+                ImageUrl = ""
             },
             };
         }
