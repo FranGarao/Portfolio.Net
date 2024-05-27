@@ -38,7 +38,12 @@ namespace Portfolio_Web.Controllers
 
         public IActionResult Index()
         {
-            _logger.LogInformation("Funciona :D");
+            _logger.LogCritical("Critico");
+            _logger.LogError("Error");
+            _logger.LogWarning("Warning");
+            _logger.LogInformation("Infoooo");
+            _logger.LogDebug("Debug");
+            _logger.LogTrace("Trace");
             // trace - > debug -> information -> warning -> error -> critical
             var guidNewModel = new ExampleGUIDNewModel()
 
