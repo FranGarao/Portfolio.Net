@@ -12,36 +12,95 @@ namespace Portfolio_Web.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly RepositoriosProyectos repositorioProyectos;
+        private readonly IRepositorioProyectos projectsRepository;
+        private readonly TransientService transientService;
+        private readonly ScopedService scopedService;
+        private readonly SingletonService singletonService;
+        private readonly TransientService transientService2;
+        private readonly ScopedService scopedService2;
+        private readonly SingletonService singletonService2;
 
-        public HomeController(ILogger<HomeController> logger, RepositoriosProyectos repositorioProyectos)
+        public HomeController(ILogger<HomeController> logger,
+            IRepositorioProyectos projectsRepository,
+            TransientService transientService,
+            ScopedService scopedService,
+            SingletonService singletonService,
+            TransientService transientService2,
+            ScopedService scopedService2,
+            SingletonService singletonService2
+            )
         {
             _logger = logger;
-            this.repositorioProyectos = repositorioProyectos;
+            this.projectsRepository = projectsRepository;
+            this.transientService = transientService;
+            this.scopedService = scopedService;
+            this.singletonService = singletonService;
+            this.transientService2 = transientService2;
+            this.scopedService2 = scopedService2;
+            this.singletonService2 = singletonService2;
         }
 
         public IActionResult Index()
         {
-            Console.WriteLine("Hola mundo!");
-            ViewBag.age = "22";
+
+
+            var guidNewModel = new ExampleGUIDNewModel()
+            {
+                Transient = transientService.GetGuid,
+                Scoped = scopedService.GetGuid,
+                Singleton = singletonService.GetGuid
+            };
+
+            var guidNewModel2 = new ExampleGUIDNewModel()
+            {
+                Transient = transientService2.GetGuid,
+                Scoped = scopedService2.GetGuid,
+                Singleton = singletonService2.GetGuid
+            };
             // instanciar una clase tambien es una responsabilidad. Para evitar esto podemos usar la 
             // inyeccion de dependencias.
 
-            var projects = repositorioProyectos.GetProjects().Take(2).ToList();
-            var model = new HomeIndexViewModel() { Projects = projects };
+            var projects = projectsRepository.GetProjects().Take(2).ToList();
+            var model = new HomeIndexViewModel()
+            {
+                Projects = projects,
+                ExampleGUID_1 = guidNewModel,
+                ExampleGUID_2 = guidNewModel2
+            };
+
+            // trace - > debug -> information -> warning -> error -> critical
+
             var person = new Person()
             {
-                Name = "Francisco",
+                Name = "Fran",
                 LastName = "Garao",
                 Age = 22,
-                Address = "Calle Falsa 123"
             };
-            //  es necesario especificar el nombre de la vista solamente si pasamos como model un string
-            //  return View("Index", "Franchute");
+            var result = person.Sumar(10, 12, 11);
+            _logger.LogCritical(result.ToString());
+
             return View(model);
         }
 
-       
-        public IActionResult Privacy()
+        public IActionResult Proyectos()
+        {
+            var projects = projectsRepository.GetProjects();
+            return View(projects);
+        }
+
+        [HttpGet]
+        public IActionResult Contact()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Contact(ContactViewModel contactViewModel)
+        {
+            return RedirectToAction("Gracias");
+        }
+
+        public IActionResult Gracias()
         {
             return View();
         }

@@ -4,9 +4,12 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-// sistema de inyeccion de dependencias de ASP.NET core.
-// en services se puede configurar las clases del sistema de inyeccion de dependencias
-builder.Services.AddTransient<RepositoriosProyectos>();
+builder.Services.AddTransient<IRepositorioProyectos, RepositoriosProyectos>();
+// tipos de inyeccion de dependencias
+builder.Services.AddTransient<TransientService>(); 
+builder.Services.AddSingleton<SingletonService>(); 
+builder.Services.AddScoped<ScopedService>(); 
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

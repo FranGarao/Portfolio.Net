@@ -4,9 +4,36 @@
 @{
     ViewData["Title"] = "Portfolio - Home";
 }
+
+<h1>Ejemplo1</h1>
+<div>
+    Guid Transient: <b style="color: lawngreen;">@Model.ExampleGUID_1.Transient</b>
+</div>
+
+<div>
+    Guid Transient: <b style="color: red;">@Model.ExampleGUID_1.Scoped</b>
+</div>
+
+<div>
+    Guid Transient: <b style="color: blue;">@Model.ExampleGUID_1.Singleton</b>
+</div>
+
+<h1>Ejemplo2</h1>
+<div>
+    Guid Transient: <b style="color: lawngreen;">@Model.ExampleGUID_2.Transient</b>
+</div>
+
+<div>
+    Guid Transient: <b style="color: red;">@Model.ExampleGUID_2.Scoped</b>
+</div>
+
+<div>
+    Guid Transient: <b style="color: blue;">@Model.ExampleGUID_2.Singleton</b>
+</div>
+
 <partial name="_Presentation" />
 <partial name="_Skills" />
-<partial name="_ProjectsSection" model="Model.Projects"/>
+<partial name="_ProjectsSection" model="Model.Projects" />
 
 
 
